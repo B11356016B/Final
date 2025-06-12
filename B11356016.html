@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)http://127.0.0.1:5500/B11356016/%E6%9C%9F%E6%9C%AB.html -->
+<html lang="zh-Hant"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEVENTEEN 介紹</title>
+    <link href="./B11356016_files/css2" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #F7CAC9, #92A8D1);
+            color: #333;
+            padding: 1rem;
+        }
+
+        header {
+            background-color: #43596f;
+            color: white;
+            padding: 1rem;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .category-filter {
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav .category-filter button {
+            background-color: #92A8D1;
+            border: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav .category-filter button.active,
+        nav .category-filter button:hover {
+            background-color: #F7CAC9;
+            color: #333;
+        }
+
+        .sub-unit-nav {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .sub-unit-nav a {
+            background-color: #F7CAC9;
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .sub-unit-nav a.active,
+        .sub-unit-nav a:hover {
+            background-color: #92A8D1;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+
+        .card[data-category="subunit"] img {
+            height: auto;
+            max-height: 220px;
+            object-fit: contain; 
+        }
+
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            background: linear-gradient(to right, #203354, #3d4d6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.2rem;
+            margin: 0.5rem 0 0.25rem 0;
+        }
+
+        .collapse-content {
+            max-height: 0;
+            overflow: hidden;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #555;
+            transition: max-height 0.35s ease;
+            padding-left: 0.25rem;
+            user-select: text;
+        }
+
+        .card.open .collapse-content {
+            max-height: 800px;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            border-top: 1px solid #ccc;
+            color: #6c757d;
+        }
+
+        .card[data-category="intro"] {
+            width: 70%;
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .card[data-category="intro"] img {
+            height: auto;
+            max-height: 400px;
+            width: auto;
+            max-width: 100%;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .card[data-category="subunit"] {
+            width: calc(33.33% - 1rem);
+            max-width: 300px;
+        }
+
+        .card[data-category="age"] {
+            width: calc(16.66% - 1.25rem);
+            max-width: 180px;
+            padding-bottom: 0.5rem;
+        }
+
+
+        .card[data-category="age"] img {
+            height: 180px; 
+            width: 100%; 
+            object-fit: contain; 
+            border-radius: 8px; 
+            margin: 0 auto;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+
+        @media (max-width: 1200px) {
+            .card[data-category="subunit"] {
+                width: calc(50% - 1rem);
+            }
+
+            .card[data-category="age"] {
+                width: calc(25% - 1.125rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card[data-category="subunit"] {
+                width: calc(100% - 1rem);
+                max-width: 400px;
+            }
+
+            .card[data-category="age"] {
+                width: calc(33.33% - 1rem);
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div>SEVENTEEN 介紹</div>
+            <div class="category-filter">
+                <button data-category="intro" class="">介紹</button>
+                <button data-category="subunit" class="active">三個小分隊</button>
+                <button data-category="age">成員</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sub-unit-nav" style="display: flex;">
+        <a href="http://127.0.0.1:5500/B11356016/%E6%9C%9F%E6%9C%AB.html#" data-subunit="all" class="active">全部</a>
+        <a href="http://127.0.0.1:5500/B11356016/%E6%9C%9F%E6%9C%AB.html#" data-subunit="vocal">主唱分隊</a>
+        <a href="http://127.0.0.1:5500/B11356016/%E6%9C%9F%E6%9C%AB.html#" data-subunit="hiphop">Hip Hop分隊</a>
+        <a href="http://127.0.0.1:5500/B11356016/%E6%9C%9F%E6%9C%AB.html#" data-subunit="performance">表演分隊</a>
+    </div>
+
+    <main class="container" style="padding-top: 1rem;">
+        <div class="card" data-category="intro" data-item="group-intro" style="display: none;">
+            <h2>SEVENTEEN 團體介紹</h2>
+            <img src="./B11356016_files/all.jpg" alt="SEVENTEEN 團體照">
+            <div class="collapse-content">
+                <p><strong>出道日期：</strong>2015年5月26日</p>
+                <p><strong>粉絲名：</strong>CARAT (克拉)</p>
+                <p><strong>應援色：</strong>玫瑰石英粉（Rose Quartz）和寧靜藍（Serenity）</p>
+                <p><strong>團名來源：</strong>由 13 名成員 + 3 個分隊 + 1 個團體 = 17 </p>
+                <br>
+                <p><strong>代表作：</strong></p>
+                <ul>
+                    <li>Adore U (아낀다)</li>
+                    <li>Mansae (만세)</li>
+                    <li>VERY NICE (아주 NICE)</li>
+                    <li>Don't Wanna Cry (울고 싶지 않아)</li>
+                    <li>Left &amp; Right (레프트 &amp; 라이트)</li>
+                    <li>_WORLD</li>
+                    <li>Super (손오공)</li>
+                </ul>
+                <br>
+                <p><strong>經典綜藝：</strong></p>
+                <ul>
+                    <li>GOING SEVENTEEN (GOING SVT)</li>
+                    <li>SEVENTEEN TV</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card subunit-layout" data-category="subunit" data-subunit="vocal" style="display: flex;">
+            <h2>主唱分隊 (Vocal Unit)</h2>
+            <img src="./B11356016_files/sing.jpg" alt="主唱分隊合照">
+            <div class="collapse-content">
+                <p><strong>成員：</strong>WOOZI (隊長), JEONGHAN, JOSHUA, DK, SEUNGKWAN</p>
+                <p><strong>代表作：</strong></p>
+                <ul>
+                    <li>20</li>
+                    <li>Don't Listen In Secret (몰래 듣지 마요)</li>
+                    <li>Pillow (새벽공기)</li>
+                    <li>Pinwheel (바람개비)</li>
+                    <li>Ah! Love</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card subunit-layout" data-category="subunit" data-subunit="hiphop" style="display: flex;">
+            <h2>Hip Hop分隊 (Hip Hop Unit)</h2>
+            <img src="./B11356016_files/RAP.jpg" alt="Hip Hop分隊合照">
+            <div class="collapse-content">
+                <p><strong>成員：</strong>S.COUPS (隊長), WONWOO, MINGYU, VERNON</p>
+                <p><strong>代表作：</strong></p>
+                <ul>
+                    <li>Lean On Me (기대)</li>
+                    <li>TRAUMA</li>
+                    <li>UNTOUCHABLE</li>
+                    <li>Gam3 Bo1</li>
+                    <li>Back it up</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card subunit-layout" data-category="subunit" data-subunit="performance" style="display: flex;">
+            <h2>表演分隊 (Performance Unit)</h2>
+            <img src="./B11356016_files/dance.jpg" alt="表演分隊合照">
+            <div class="collapse-content">
+                <p><strong>成員：</strong>HOSHI (隊長), JUN, THE 8, DINO</p>
+                <p><strong>代表作：</strong></p>
+                <ul>
+                    <li>HIGHLIGHT</li>
+                    <li>Lilili Yabbay (13월의 춤)</li>
+                    <li>Shhh (MOONWALKER)</li>
+                    <li>PANG!</li>
+                    <li>SWIMMER</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" data-category="age" data-member="scoups" style="display: none;">
+            <h2>S.COUPS (勝澈)</h2>
+            <img src="./B11356016_files/1.jpg">
+            <div class="collapse-content">
+                <p><strong>出生年月日：</strong>1995年8月8日</p>
+                <p><strong>出生地：</strong>大韓民國大邱</p>
+                <p><strong>星座：</strong>獅子座</p>
+            </div>
+        </div>
+        <div class="card" data-category="age" data-member="jeonghan" style="display: none;">
+            <h2>JEONGHAN (淨漢)</h2>
+            <img src="./B11356016_files/2.jpg">
+            <div class="collapse-content">
+                <p><strong>出生年月日：</strong>1995年10月4日</p>
+                <p><strong>出生地：</strong>大韓民國首爾</p>
+                <p><strong>星座：</strong>天秤座</p>
+            </div>
+        </div>
+        <div class="card" data-category="age" data-member="joshua" style="display: none;">
+            <h2>JOSHUA (知秀)</h2>
+            <img src="./B11356016_files/3.jpg" alt="JOSHUA">
+            <div class="collapse-content">
+                <p><strong>出生年月日：</strong>1995年12月30日</p>
+                <p><strong>出生地：</strong>美國加利福尼亞州洛杉磯</p>
+                <p><strong>星座：</strong>摩羯座</p>
+            </div>
+        </div>
+        <div class="card" data-category="age" data-member="jun" style="display: none;">
+            <h2>JUN (俊輝)</h2>
+            <img src="./B11356016_files/4.jpg" alt="JUN">
+            <div class="collapse-content">
+                <p><strong>出生年月日：</strong>1996年6月10日</p>
+                <p><strong>出生地：</strong>中華人民共和國廣東省深圳市</p>
+                <p><strong>星座：</strong>雙子座</p>
+            </div>
+        </div>
+        <div class="card" data-category="age" data-member="hoshi" style="display: none;">
+            <h2>HOSHI (順榮)</h2>
+            <img src="./B11356016_files/5.jpg" alt="HOSHI">
+            <div class="collapse-content">
+                <p><strong>出生年月日：</strong>1996年6月15日</p>
+                <p><strong>出生地：</strong>大韓民國京畿道南楊州市</p>
+                <p><strong>星座：</strong>雙子座</p>
+            </div>
+        </div>
+        <div class="card" data-category="age" data-member="wonwoo" style="display: none;">
+            <h2>WONWOO (圓佑)</h2>
+            <img src="./B11356016_files/6.jpg" alt="WONWOO">
+            <div class="collapse-content">
+                <p><strong>出生年月日：</strong>1996年7月17日</p>
+                <p><strong>出生地：</strong>大韓民國慶尚南道昌原市</p>
+                <p><strong>星座：</strong>巨蟹座</p>
+            </div>
+        </div>
+        <div class="card" data-category="age" data-member="woozi" style="display: none;">
+            <h2>WOOZI (知勳)</h2>
+            <img src="./B11356016_files/7.jpg" alt="WOOZI">
+            <div class="collapse-content">
+                <p><strong>出生年月日：</strong>1996年11月22日</p>
+                <p><strong>出生地：</strong>大韓民國釜山廣域市</p>
+                <p><strong>星座：</strong>天蠍座</p>
+            </div>
+        </div>
+
+
+        <div class="card" data-category="age" data-member="the8" style="display: none;">
+            <h2>THE 8 (明浩)</h2>
+            <img src="./B11356016_files/8.jpg" alt="THE 8">
+            <div class="collapse-content">
+                <p><strong>出生年月日：</strong>1997年11月7日</p>
+                <p><strong>出生地：</strong>中華人民共和國遼寧省鞍山市</p>
+                <p><strong>星座：</strong>天蠍座</p>
+            </div>
+        </div>
+
+        <div class="card" data-category="age" data-member="mingyu" style="display: none;">
+            <h2>MINGYU (珉奎)</h2>
+            <img src="./B11356016_files/9.jpg" alt="MINGYU">
+            <div class="collapse-content">
+                <p><strong>出生年月日：</strong>1997年4月6日</p>
+                <p><strong>出生地：</strong>大韓民國京畿道安養市</p>
+                <p><strong>星座：</strong>牡羊座</p>
+            </div>
+        </div>
+
+        <div class="card" data-category="age" data-member="dk" style="display: none;">
+            <h2>DK (碩珉)</h2>
+            <img src="./B11356016_files/10.jpg" alt="DK">
+            <div class="collapse-content">
+                <p><strong>出生年月日：</strong>1997年2月18日</p>
+                <p><strong>出生地：</strong>大韓民國京畿道龍仁市</p>
+                <p><strong>星座：</strong>水瓶座</p>
+            </div>
+        </div>
+
+        <div class="card" data-category="age" data-member="seungkwan" style="display: none;">
+            <h2>SEUNGKWAN (勝寬)</h2>
+            <img src="./B11356016_files/11.jpg" alt="SEUNGKWAN">
+            <div class="collapse-content">
+                <p><strong>出生年月日：</strong>1998年1月16日</p>
+                <p><strong>出生地：</strong>大韓民國濟州特別自治道濟州市</p>
+                <p><strong>星座：</strong>摩羯座</p>
+            </div>
+        </div>
+        <div class="card" data-category="age" data-member="vernon" style="display: none;">
+            <h2>VERNON (漢率)</h2>
+            <img src="./B11356016_files/12.jpg" alt="VERNON">
+            <div class="collapse-content">
+                <p><strong>出生年月日：</strong>1998年2月18日</p>
+                <p><strong>出生地：</strong>美國紐約州紐約市</p>
+                <p><strong>星座：</strong>水瓶座</p>
+            </div>
+        </div>
+        <div class="card" data-category="age" data-member="dino" style="display: none;">
+            <h2>DINO (李燦)</h2>
+            <img src="./B11356016_files/13.jpg" alt="DINO">
+            <div class="collapse-content">
+                <p><strong>出生年月日：</strong>1999年2月11日</p>
+                <p><strong>出生地：</strong>大韓民國全羅北道益山市</p>
+                <p><strong>星座：</strong>水瓶座</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>B11356016 SEVENTEEN 介紹</footer>
+
+    <script>
+        const categoryButtons = document.querySelectorAll('nav .category-filter button');
+        const subUnitNav = document.querySelector('.sub-unit-nav');
+        const subUnitButtons = document.querySelectorAll('.sub-unit-nav a');
+        const cards = document.querySelectorAll('.card');
+        const mainContainer = document.querySelector('.container');
+
+        let selectedCategory = 'intro';
+        let selectedSubUnit = 'all';
+
+        function filterCards() {
+            cards.forEach(card => card.classList.remove('intro-layout', 'subunit-layout', 'age-layout'));
+
+            if (selectedCategory === 'intro') {
+                mainContainer.style.alignItems = 'flex-start';
+                mainContainer.style.paddingTop = '2rem';
+            } else {
+                mainContainer.style.alignItems = '';
+                mainContainer.style.paddingTop = '1rem';
+            }
+
+            cards.forEach(card => {
+                const isMatchingCategory = card.dataset.category === selectedCategory;
+                const isMatchingSubUnit = selectedCategory === 'subunit' ? (selectedSubUnit === 'all' || card.dataset.subunit === selectedSubUnit) : true;
+
+                if (isMatchingCategory && isMatchingSubUnit) {
+                    card.style.display = 'flex';
+                    card.classList.add(`${selectedCategory}-layout`);
+                } else {
+                    card.style.display = 'none';
+                    card.classList.remove('open');
+                }
+            });
+
+            subUnitNav.style.display = selectedCategory === 'subunit' ? 'flex' : 'none';
+        }
+
+        categoryButtons.forEach(btn => {
+            btn.onclick = () => {
+                categoryButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedCategory = btn.dataset.category;
+                selectedSubUnit = 'all';
+                subUnitButtons.forEach(b => b.classList.remove('active'));
+                document.querySelector('.sub-unit-nav a[data-subunit="all"]')?.classList.add('active');
+                filterCards();
+            };
+        });
+
+        subUnitButtons.forEach(btn => {
+            btn.onclick = e => {
+                e.preventDefault();
+                subUnitButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedSubUnit = btn.dataset.subunit;
+                filterCards();
+            };
+        });
+        cards.forEach(card => {
+            card.onclick = () => card.classList.toggle('open');
+        });
+
+        filterCards();
+    </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
